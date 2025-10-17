@@ -1,18 +1,14 @@
-import { useState } from "react";
-
-export default function QuantityCounter({ quantity = 0 }) {
-  const [quant, setQuantity] = useState(quantity);
+export default function QuantityCounter({ 
+  productQuantity,
+  handleAddToQuantity,
+  handleRemoveFromQuantity,
+  mode
+  }) {
   return (
     <div className="ProductQuantityDiv">
-      <button
-        onClick={() =>
-          quant > quantity ? setQuantity(quant - 1) : setQuantity(quantity)
-        }
-      >
-        -
-      </button>
-      <p>{quant}</p>
-      <button onClick={() => setQuantity(quant + 1)}>+</button>
+      <button className="QuantityBtn" onClick={() => handleRemoveFromQuantity(productQuantity.id, mode)}>-</button>
+      <p>{productQuantity.quantity}</p>
+      <button className="QuantityBtn" onClick={() => handleAddToQuantity(productQuantity.id, mode)}>+</button>
     </div>
   );
 }

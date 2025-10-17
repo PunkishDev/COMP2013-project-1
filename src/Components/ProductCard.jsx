@@ -1,14 +1,28 @@
 import QuantityCounter from "./QuantityCounter";
 
-export default function Product({ img, productName, brand, price }) {
+export default function Product({ 
+  image, 
+  productName,
+  brand, 
+  price, 
+  productQuantity,
+  handleAddToQuantity,
+  handleRemoveFromQuantity,
+  handleAddToCart
+  }) {
   return (
     <div className="ProductCard">
       <h2>{productName}</h2>
-      <img src={img} alt="" />
+      <img src={image} alt="" />
       <p>{brand}</p>
-      <QuantityCounter quantity={1} />
+      <QuantityCounter 
+        productQuantity={productQuantity}
+        handleAddToQuantity={handleAddToQuantity}
+        handleRemoveFromQuantity={handleRemoveFromQuantity}
+        mode={"Product"}
+      />
       <p>{price}</p>
-      <button>Add to Cart</button>
+      <button onClick={() => handleAddToCart(productQuantity)}>Add to Cart</button>
     </div>
   );
 }

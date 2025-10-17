@@ -1,14 +1,23 @@
 import Product from "./ProductCard"
 
-export default function ProductsContainer({products}) {
+export default function ProductsContainer({
+    products, 
+    productQuantity,
+    handleAddToQuantity,
+    handleRemoveFromQuantity,
+    handleAddToCart
+    }) {
     return <div className="ProductsContainer">
         {
             products.map((product) => (
-                <Product key={product['id']}
-                    productName={product['productName']}
-                    brand={product['brand']}
-                    price={product['price']}
-                    img={product['image']}/>
+                <Product 
+                    key={product.id} 
+                    {...product} 
+                    productQuantity={productQuantity.find((prod) => prod.id === product.id)}
+                    handleAddToQuantity={handleAddToQuantity}
+                    handleRemoveFromQuantity={handleRemoveFromQuantity}
+                    handleAddToCart={handleAddToCart}
+                />
             ))
         }
     </div>

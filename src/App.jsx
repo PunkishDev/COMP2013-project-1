@@ -1,12 +1,11 @@
 import "./App.css";
-import GroceriesAppContainer from "./Components/GroceriesAppContainer";
+import GroceriesApp from "./Components/GroceriesApp";
 import products from "./data/products";
 
 function App() {
-  return <>
-  {/* Add your code here! */}
-    <GroceriesAppContainer data={products}/>
-  </>;
+  return (<>
+    <GroceriesApp data={products}/>
+  </>);
 }
 
 export default App;
