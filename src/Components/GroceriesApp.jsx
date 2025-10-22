@@ -91,7 +91,11 @@ export default function GroceriesApp({data}) {
             })
         }
         else {
-            alert("Item already exists in cart!");
+            const newCart = cart.map((prod) => {
+                return prod.id === productToAdd.id ? {...prod, quantity: prod.quantity + productToAdd.quantity} : prod;
+            });
+            setCart(newCart);
+            return;
         }
     }
 
